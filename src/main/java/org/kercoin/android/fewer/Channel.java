@@ -27,7 +27,7 @@ public class Channel {
         String name = null;
         for (Stream s : streams) {
             String candidate = s.getName();
-            name = StringUtils.findLongerCommonPrefix(name, candidate);
+            name = StringUtils.findLongerCommonPrefix(name, candidate).trim();
         }
         this.name = name;
     }

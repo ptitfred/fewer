@@ -26,7 +26,7 @@ public class ParserTest {
         // then
         assertThat(channels).isNotNull().hasSize(10);
         assertThat(channels[0].getKey()).isEqualTo("2");
-        assertThat(channels[0].getName()).isEqualTo("France 2 ");
+        assertThat(channels[0].getName()).isEqualTo("France 2");
     }
 
 }
