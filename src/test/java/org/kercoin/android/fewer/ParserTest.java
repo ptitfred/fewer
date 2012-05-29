@@ -63,4 +63,16 @@ public class ParserTest {
         logger.debug(Arrays.toString(channels));
     }
 
+    @Test
+    public void shouldLoadFreeTVPlaylist() {
+        // given
+        load("playlist-20120529.m3u");
+
+        // when
+        Channel[] channels = parser.parse();
+
+        // then
+        assertThat(channels).isNotNull().hasSize(471);
+    }
+
 }
