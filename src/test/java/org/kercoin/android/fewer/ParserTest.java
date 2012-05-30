@@ -2,7 +2,6 @@ package org.kercoin.android.fewer;
 
 import static org.fest.assertions.Assertions.assertThat;
 
-import java.io.InputStream;
 import java.util.Arrays;
 
 import org.junit.Test;
@@ -16,9 +15,7 @@ public class ParserTest {
     Parser parser;
 
     private void load(final String dataset) {
-        String prefix = "org/kercoin/android/fewer/";
-        InputStream is = getClass().getClassLoader().getResourceAsStream(prefix + dataset);
-        parser = new Parser(is);
+        parser = new Parser(TestsUtils.loadRelativeTo(ParserTest.class, dataset));
     }
 
     @Test
