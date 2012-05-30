@@ -35,4 +35,23 @@ public class ParserTest {
         assertThat(channels[0].getName()).isEqualTo("France 2");
     }
 
+    @Test
+    public void shouldFind_supportVLCOPT() {
+        // given
+        load("playlist-vlc-opt-20120529.m3u");
+
+        // when
+        Channel[] channels = parser.parse();
+
+        // then
+        assertThat(channels).isNotNull().hasSize(4);
+        final Channel europe1 = channels[0];
+        assertThat(europe1.getKey()).isEqualTo("10001");
+        assertThat(europe1.getName()).isEqualTo("Europe 1");
+        assertThat(europe1.getStreams()).hasSize(1);
+        final String europe1Flux = europe1.getStreams()[0].getSource();
+        assertThat(europe1Flux).isEqualTo("rtsp://mafreebox.freebox.fr/fbxtv_pub/stream?namespace=1&service=100004");
+        logger.debug(Arrays.toString(channels));
+    }
+
 }

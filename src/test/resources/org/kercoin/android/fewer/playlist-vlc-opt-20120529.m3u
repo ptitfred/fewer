@@ -1,0 +1,21 @@
+#EXTM3U
+#EXTINF:0,10001 - Europe 1
+#EXTVLCOPT:ts-es-id-pid
+#EXTVLCOPT:no-video
+#EXTVLCOPT:audio-track-id=1001
+rtsp://mafreebox.freebox.fr/fbxtv_pub/stream?namespace=1&service=100004
+#EXTINF:0,10003 - France Inter
+#EXTVLCOPT:ts-es-id-pid
+#EXTVLCOPT:no-video
+#EXTVLCOPT:audio-track-id=1001
+rtsp://mafreebox.freebox.fr/fbxtv_pub/stream?namespace=1&service=100006
+#EXTINF:0,10004 - RMC Info
+#EXTVLCOPT:ts-es-id-pid
+#EXTVLCOPT:no-video
+#EXTVLCOPT:audio-track-id=1004
+rtsp://mafreebox.freebox.fr/fbxtv_pub/stream?namespace=1&service=100004
+#EXTINF:0,10005 - RTL
+#EXTVLCOPT:ts-es-id-pid
+#EXTVLCOPT:no-video
+#EXTVLCOPT:audio-track-id=1006
+rtsp://mafreebox.freebox.fr/fbxtv_pub/stream?namespace=1&service=100004

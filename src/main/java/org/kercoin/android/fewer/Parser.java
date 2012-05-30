@@ -77,6 +77,9 @@ public class Parser {
                     String key = streamDefinition[0];
                     String name = streamDefinition[1];
                     buffer = reader.readLine();
+                    while (buffer.startsWith("#")) {
+                        buffer = reader.readLine();
+                    }
                     Channel c = channels.get(key);
                     if (c == null) {
                         c = new Channel(key);
