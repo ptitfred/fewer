@@ -12,7 +12,7 @@ public class Channel {
 
     public Channel(String key) {
         this.key = key;
-        streams = new ArrayList<Stream>();
+        this.streams = new ArrayList<Stream>();
     }
 
     public boolean add(Stream e) {

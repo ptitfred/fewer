@@ -15,7 +15,7 @@ public class Parser {
 
     private static enum Token {
         EXTENDED_M3U("EXTM3U"),
-        EXTINF("EXTINF") {
+        INFO("EXTINF") {
             public String[] parse(String line) {
                 return line.split(":")[1].split(",");
             }
@@ -47,7 +47,7 @@ public class Parser {
         this(new BufferedReader(new InputStreamReader(is)));
     }
 
-    boolean extended = false;
+    private boolean extended = false;
 
     static class StringToIntegerComparator implements Comparator<String> {
         public int compare(String o1, String o2) {
@@ -70,9 +70,9 @@ public class Parser {
                     // nothing
                     // should assert first line
                     extended = true;
-                } else if (Token.EXTINF.matches(buffer)) {
+                } else if (Token.INFO.matches(buffer)) {
                     assertExtended();
-                    String[] support = Token.EXTINF.parse(buffer);
+                    String[] support = Token.INFO.parse(buffer);
                     String[] streamDefinition = support[1].split(" - ");
                     String key = streamDefinition[0];
                     String name = streamDefinition[1];
