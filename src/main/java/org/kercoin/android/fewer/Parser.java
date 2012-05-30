@@ -4,7 +4,9 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.List;
 import java.util.Set;
 import java.util.SortedMap;
 import java.util.TreeMap;
@@ -18,6 +20,12 @@ public class Parser {
         INFO("EXTINF") {
             public String[] parse(String line) {
                 return line.split(":")[1].split(",");
+            }
+        },
+        VLC_OPT("EXTVLCOPT") {
+            @Override
+            public String[] parse(String line) {
+                return line.split(":")[1].split("=");
             }
         };
 
@@ -77,7 +85,16 @@ public class Parser {
                     String key = streamDefinition[0];
                     String name = streamDefinition[1];
                     buffer = reader.readLine();
-                    while (buffer.startsWith("#")) {
+                    List<Option> options = new ArrayList<Option>();
+                    while (buffer.startsWith("#EXT")) {
+                        if (Token.VLC_OPT.matches(buffer)) {
+                            String[] option = Token.VLC_OPT.parse(buffer);
+                            if (option.length == 1) {
+                                options.add(new Option(option[0]));
+                            } else {
+                                options.add(new Option(option[0], option[1]));
+                            }
+                        }
                         buffer = reader.readLine();
                     }
                     Channel c = channels.get(key);
@@ -85,7 +102,7 @@ public class Parser {
                         c = new Channel(key);
                         channels.put(key, c);
                     }
-                    Stream s = new Stream(name, buffer);
+                    Stream s = new Stream(name, buffer, options.toArray(new Option[0]));
                     c.add(s);
                 }
             }

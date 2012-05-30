@@ -51,6 +51,15 @@ public class ParserTest {
         assertThat(europe1.getStreams()).hasSize(1);
         final String europe1Flux = europe1.getStreams()[0].getSource();
         assertThat(europe1Flux).isEqualTo("rtsp://mafreebox.freebox.fr/fbxtv_pub/stream?namespace=1&service=100004");
+        final Option[] europe1Options = europe1.getStreams()[0].getOptions();
+        assertThat(europe1Options).hasSize(3);
+        assertThat(europe1Options[0].hasValue()).isFalse();
+        assertThat(europe1Options[0].getName()).isEqualTo("ts-es-id-pid");
+        assertThat(europe1Options[1].hasValue()).isFalse();
+        assertThat(europe1Options[1].getName()).isEqualTo("no-video");
+        assertThat(europe1Options[2].hasValue()).isTrue();
+        assertThat(europe1Options[2].getName()).isEqualTo("audio-track-id");
+        assertThat(europe1Options[2].getValue()).isEqualTo("1001");
         logger.debug(Arrays.toString(channels));
     }
 
