@@ -1,11 +1,14 @@
 package org.kercoin.android.fewer;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 
-public class Channel {
+public class Channel implements Serializable {
 
-    private final String key;
+	private static final long serialVersionUID = 1L;
+
+	private final String key;
     private final Collection<Stream> streams;
 
     private String name;

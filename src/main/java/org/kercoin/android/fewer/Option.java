@@ -1,8 +1,12 @@
 package org.kercoin.android.fewer;
 
-public class Option {
+import java.io.Serializable;
 
-    private final String name;
+public class Option implements Serializable {
+
+	private static final long serialVersionUID = 1L;
+
+	private final String name;
     private final String value;
     private final boolean hasValue;
 

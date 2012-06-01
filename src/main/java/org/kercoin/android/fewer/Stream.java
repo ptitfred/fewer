@@ -1,10 +1,13 @@
 package org.kercoin.android.fewer;
 
+import java.io.Serializable;
 import java.util.Arrays;
 
-public class Stream {
+public class Stream implements Serializable {
 
-    private final String name;
+	private static final long serialVersionUID = 1L;
+
+	private final String name;
     private final String sourceURL;
     private final Option[] options;
 
