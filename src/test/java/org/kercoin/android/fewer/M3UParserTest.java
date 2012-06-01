@@ -8,14 +8,14 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class ParserTest {
+public class M3UParserTest {
 
-    private static final Logger logger = LoggerFactory .getLogger(ParserTest.class);
+    private static final Logger logger = LoggerFactory .getLogger(M3UParserTest.class);
 
-    Parser parser;
+    M3UParser parser;
 
     private void load(final String dataset) {
-        parser = new Parser(TestsUtils.loadRelativeTo(ParserTest.class, dataset));
+        parser = new M3UParser(TestsUtils.loadRelativeTo(M3UParserTest.class, dataset));
     }
 
     @Test

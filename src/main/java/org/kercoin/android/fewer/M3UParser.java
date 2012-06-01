@@ -11,7 +11,7 @@ import java.util.Set;
 import java.util.SortedMap;
 import java.util.TreeMap;
 
-public class Parser {
+public class M3UParser {
 
     private final BufferedReader reader;
 
@@ -47,11 +47,11 @@ public class Parser {
         }
     }
 
-    public Parser(BufferedReader reader) {
+    public M3UParser(BufferedReader reader) {
         this.reader = reader;
     }
 
-    public Parser(InputStream is) {
+    public M3UParser(InputStream is) {
         this(new BufferedReader(new InputStreamReader(is)));
     }
 
