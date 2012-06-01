@@ -2,6 +2,8 @@ package org.kercoin.android.fewer;
 
 import static org.fest.assertions.Assertions.assertThat;
 
+import java.io.UnsupportedEncodingException;
+
 import org.junit.Test;
 
 public class PLSParserTest {
@@ -9,7 +11,12 @@ public class PLSParserTest {
     PLSParser parser;
 
 	private void load(final String dataset) {
-        parser = new PLSParser(TestsUtils.loadRelativeTo(M3UParserTest.class, dataset));
+        try {
+			parser = new PLSParser(TestsUtils.loadRelativeTo(M3UParserTest.class, dataset), "UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			// UTF8 unsupported, really?
+			e.printStackTrace();
+		}
     }
 
     @Test

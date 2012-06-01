@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
 
 public class PLSParser implements PlaylistParser {
 
@@ -22,13 +23,13 @@ public class PLSParser implements PlaylistParser {
 	public PLSParser() {
 	}
 
-	public PLSParser(InputStream data) {
-		open(data);
+	public PLSParser(InputStream data, String charset) throws UnsupportedEncodingException {
+		open(data, charset);
 	}
 
 	@Override
-	public PLSParser open(InputStream data) {
-		this.reader = new BufferedReader(new InputStreamReader(data));
+	public PLSParser open(InputStream data, String charset) throws UnsupportedEncodingException {
+		this.reader = new BufferedReader(new InputStreamReader(data, charset));
 		return this;
 	}
 

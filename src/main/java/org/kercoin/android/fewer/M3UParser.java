@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -49,13 +50,13 @@ public class M3UParser implements PlaylistParser {
 
     public M3UParser() {}
 
-    public M3UParser(InputStream data) {
-        open(data);
+    public M3UParser(InputStream data, String charset) throws UnsupportedEncodingException {
+        open(data, charset);
     }
 
     @Override
-    public M3UParser open(InputStream data) {
-        this.reader = new BufferedReader(new InputStreamReader(data));
+    public M3UParser open(InputStream data, String charset) throws UnsupportedEncodingException {
+        this.reader = new BufferedReader(new InputStreamReader(data, charset));
         return this;
     }
 

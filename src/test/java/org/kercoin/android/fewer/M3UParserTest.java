@@ -2,6 +2,7 @@ package org.kercoin.android.fewer;
 
 import static org.fest.assertions.Assertions.assertThat;
 
+import java.io.UnsupportedEncodingException;
 import java.util.Arrays;
 
 import org.junit.Test;
@@ -15,7 +16,12 @@ public class M3UParserTest {
     M3UParser parser;
 
     private void load(final String dataset) {
-        parser = new M3UParser(TestsUtils.loadRelativeTo(M3UParserTest.class, dataset));
+        try {
+			parser = new M3UParser(TestsUtils.loadRelativeTo(M3UParserTest.class, dataset), "UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			// UTF8 unsupported, really?
+			e.printStackTrace();
+		}
     }
 
     @Test
