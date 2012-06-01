@@ -4,7 +4,7 @@ import java.io.InputStream;
 
 public interface PlaylistParser {
 
-	void open(InputStream data);
+	PlaylistParser open(InputStream data);
 
 	Channel[] parse();
 

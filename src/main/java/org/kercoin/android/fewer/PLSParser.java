@@ -27,8 +27,9 @@ public class PLSParser implements PlaylistParser {
 	}
 
 	@Override
-	public void open(InputStream data) {
+	public PLSParser open(InputStream data) {
 		this.reader = new BufferedReader(new InputStreamReader(data));
+		return this;
 	}
 
 	private static final Channel[] DEFAULT_ANSWER = new Channel[0];

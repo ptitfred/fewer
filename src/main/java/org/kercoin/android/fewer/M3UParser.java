@@ -54,8 +54,9 @@ public class M3UParser implements PlaylistParser {
     }
 
     @Override
-    public void open(InputStream data) {
+    public M3UParser open(InputStream data) {
         this.reader = new BufferedReader(new InputStreamReader(data));
+        return this;
     }
 
     private boolean extended = false;
