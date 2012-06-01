@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
-public class PLSParser {
+public class PLSParser implements PlaylistParser {
 
 	private final BufferedReader reader;
 
@@ -28,6 +28,7 @@ public class PLSParser {
 
 	private static final Channel[] DEFAULT_ANSWER = new Channel[0];
 
+	@Override
 	public Channel[] parse() {
 		try {
 			if (!Token.PLAYLIST.equals(reader.readLine())) {

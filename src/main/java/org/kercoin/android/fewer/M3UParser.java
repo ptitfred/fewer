@@ -11,7 +11,7 @@ import java.util.Set;
 import java.util.SortedMap;
 import java.util.TreeMap;
 
-public class M3UParser {
+public class M3UParser implements PlaylistParser {
 
     private final BufferedReader reader;
 
@@ -64,6 +64,7 @@ public class M3UParser {
         
     }
 
+    @Override
     public Channel[] parse() {
         try {
             SortedMap<String, Channel> channels = new TreeMap<String, Channel>(new StringToIntegerComparator());
