@@ -13,7 +13,7 @@ import java.util.TreeMap;
 
 public class M3UParser implements PlaylistParser {
 
-    private final BufferedReader reader;
+    private BufferedReader reader;
 
     private static enum Token {
         EXTENDED_M3U("EXTM3U"),
@@ -47,12 +47,15 @@ public class M3UParser implements PlaylistParser {
         }
     }
 
-    public M3UParser(BufferedReader reader) {
-        this.reader = reader;
+    public M3UParser() {}
+
+    public M3UParser(InputStream data) {
+        open(data);
     }
 
-    public M3UParser(InputStream is) {
-        this(new BufferedReader(new InputStreamReader(is)));
+    @Override
+    public void open(InputStream data) {
+        this.reader = new BufferedReader(new InputStreamReader(data));
     }
 
     private boolean extended = false;

@@ -7,7 +7,7 @@ import java.io.InputStreamReader;
 
 public class PLSParser implements PlaylistParser {
 
-	private final BufferedReader reader;
+	private BufferedReader reader;
 
 	private static class Token {
 		static final String PLAYLIST = "[playlist]";
@@ -18,12 +18,17 @@ public class PLSParser implements PlaylistParser {
 		static final String VERSION = "Version";
 		static final String SEPARATOR = "=";
 	}
-	public PLSParser(InputStream data) {
-		this(new BufferedReader(new InputStreamReader(data)));
+
+	public PLSParser() {
 	}
 
-	public PLSParser(BufferedReader bufferedReader) {
-		this.reader = bufferedReader;
+	public PLSParser(InputStream data) {
+		open(data);
+	}
+
+	@Override
+	public void open(InputStream data) {
+		this.reader = new BufferedReader(new InputStreamReader(data));
 	}
 
 	private static final Channel[] DEFAULT_ANSWER = new Channel[0];
